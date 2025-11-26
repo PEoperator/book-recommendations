@@ -14,14 +14,25 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-<!-- Header with your uploaded image -->
-<!-- Header with Your Custom Image -->
-<header class="relative bg-cover bg-center bg-fixed py-20 overflow-hidden" style="background-image: url('https://raw.githubusercontent.com/PEoperator/book-recommendations/main/Untitled.jpg');">
-  <!-- Overlay for text readability -->
-  <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-  <div class="relative max-w-6xl mx-auto px-6 text-center text-white">
-    <h1 class="text-5xl md:text-6xl font-bold mb-4 drop-shadow-2xl">My Book Recommendations</h1>
-    <p class="text-xl md:text-2xl opacity-90 drop-shadow-lg">Books that actually changed how I think. All links are Amazon affiliate-free unless noted.</p>
+
+<!-- Header – shows the FULL image on every screen size -->
+<header class="relative w-full h-screen max-h-screen overflow-hidden">
+  <!-- Your full image – scaled to fit width, full height visible -->
+  <img src="https://raw.githubusercontent.com/PEoperator/book-recommendations/main/Untitled.jpg" 
+       alt="Header background" 
+       class="absolute inset-0 w-full h-full object-cover object-top md:object-center">
+
+  <!-- Dark overlay so text stays readable -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <!-- Text centered on top -->
+  <div class="relative h-full flex flex-col items-center justify-center text-center px-6 text-white">
+    <h1 class="text-5xl md:text-7xl font-bold mb-4 drop-shadow-2xl drop-shadow-2xl">
+      My Book Recommendations
+    </h1>
+    <p class="text-xl md:text-2xl drop-shadow-lg">
+      Books that actually changed how I think
+    </p>
   </div>
 </header>
   
@@ -98,6 +109,7 @@
 </body>
 
 </html>
+
 
 
 
