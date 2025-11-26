@@ -15,24 +15,14 @@
 <body class="bg-gray-50 text-gray-800">
 
 
-<!-- Fixed-height header – full image always visible -->
-<header class="relative h-96 md:h-screen md:max-h-screen overflow-hidden flex items-center justify-center">
-  <!-- Your image – scales to cover width but keeps full content visible -->
-  <img src="https://raw.githubusercontent.com/PEoperator/book-recommendations/main/Untitled.jpg"
-       alt="Header"
-       class="absolute inset-0 w-full h-full object-cover object-top md:object-center -z-10">
-
-  <!-- Dark overlay for text contrast -->
-  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-
-  <!-- Title text -->
-  <div class="relative text-center px-6 text-white z-10">
-    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 drop-shadow-2xl">
-      My Book Recommendations
-    </h1>
-    <p class="text-lg md:text-2xl drop-shadow-lg">
-      Books that actually changed how I think
-    </p>
+<!-- Header – Original compact height, full image always visible -->
+<header class="relative bg-cover bg-center bg-no-repeat py-16 md:py-16 overflow-hidden" 
+        style="background-image: url('https://pbs.twimg.com/profile_banners/185266833/1732726410/1500x500'); background-size: 100% auto;">
+  <!-- Overlay for text readability -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative max-w-6xl mx-auto px-6 text-center text-white">
+    <h1 class="text-5xl font-bold mb-4 drop-shadow-lg">My Book Recommendations</h1>
+    <p class="text-xl opacity-90 drop-shadow-md">Books that actually changed how I think. All links are Amazon affiliate-free unless noted.</p>
   </div>
 </header>
 
@@ -123,6 +113,7 @@
 </body>
 
 </html>
+
 
 
 
