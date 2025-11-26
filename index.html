@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Book Recommendations</title>
+  <meta name="description" content="Hand-picked book recommendations with direct Amazon links">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    .book-cover { transition: transform 0.3s; }
+    .book-cover:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-16">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h1 class="text-5xl font-bold mb-4">My Book Recommendations</h1>
+      <p class="text-xl opacity-90">Books that actually changed how I think. All links are Amazon affiliate-free unless noted.</p>
+    </div>
+  </header>
+
+  <!-- Books Grid -->
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      
+      <!-- EXAMPLE BOOK - Just duplicate this <article> block for each new book -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden book-cover">
+        <a href="https://www.amazon.com/dp/0735211299?tag=YOURAFFILIATEIFANY-20" target="_blank" rel="noopener">
+          <img src="https://m.media-amazon.com/images/I/91vvVecsu3L.jpg" alt="Atomic Habits by James Clear" class="w-full h-96 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Atomic Habits</h3>
+            <p class="text-gray-600 mb-3">James Clear</p>
+            <span class="inline-block bg-indigo-100 text-indigo-800 text-sm px-3 py-1 rounded-full">Productivity • Self-Help</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- Add more books below - just copy the block above and change the details -->
+
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden book-cover">
+        <a href="https://www.amazon.com/dp/0062457713?tag=YOURAFFILIATEIFANY-20" target="_blank" rel="noopener">
+          <img src="https://m.media-amazon.com/images/I/81OdRZnWX-L.jpg" alt="The Psychology of Money by Morgan Housel" class="w-full h-96 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">The Psychology of Money</h3>
+            <p class="text-gray-600 mb-3">Morgan Housel</p>
+            <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">Finance • Behavioral Economics</span>
+          </div>
+        </a>
+      </article>
+
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden book-cover">
+        <a href="https://www.amazon.com/dp/1591848220?tag=YOURAFFILIATEIFANY-20" target="_blank" rel="noopener">
+          <img src="https://m.media-amazon.com/images/I/71QKQ9mwV7L.jpg" alt="Deep Work by Cal Newport" class="w-full h-96 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Deep Work</h3>
+            <p class="text-gray-600 mb-3">Cal Newport</p>
+            <span class="inline-block bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full">Productivity • Focus</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- Keep adding as many as you want -->
+
+    </div>
+
+    <div class="text-center mt-16">
+      <p class="text-gray-600">Got a book I should read? DM me on X @yourusername</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p>Made with ☕ by [Your Name] • Updated November 2025</p>
+    </div>
+  </footer>
+
+</body>
+</html>
