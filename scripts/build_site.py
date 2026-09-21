@@ -39,6 +39,12 @@ CATEGORIES = [
         "title": "Mindset & Judgment",
         "blurb": "Thinking clearly and deciding well.",
     },
+    {
+        "id": "fiction",
+        "slug": "fiction.html",
+        "title": "Fiction",
+        "blurb": "Novels, stories, and literary worlds.",
+    },
 ]
 
 CAT_BY_ID = {c["id"]: c for c in CATEGORIES}
@@ -257,8 +263,8 @@ def build_rushmore(books: list[dict]) -> str:
 
 
 def build_latest(books: list[dict]) -> str:
-    # Bottom-of-file recency: last 5 in source order; display newest first
-    latest = list(reversed(books[-5:]))
+    # Top of live grid under Mt. Rushmore: first 5 non-rushmore in source order
+    latest = [b for b in books if not b.get("rushmore")][:5]
     cards = [mark_book_card(b["html"], b["favorite"]) for b in latest]
     cols = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 mt-6"
     return f"""
@@ -422,8 +428,8 @@ def main() -> None:
         all_errs.extend(validate_html(p, p.read_text(encoding="utf-8")))
 
     # Stats
-    latest_titles = [b["title"] for b in reversed(books[-5:])]
-    print("Latest 5 (newest first):")
+    latest_titles = [b["title"] for b in books if not b.get("rushmore")][:5]
+    print("Latest 5 (top of live grid under Rushmore):")
     for t in latest_titles:
         print(" -", t)
     print("Favorites total:", sum(1 for b in books if b["favorite"]))
