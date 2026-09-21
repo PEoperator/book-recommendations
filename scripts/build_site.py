@@ -368,8 +368,8 @@ def main() -> None:
     home_main = "\n\n".join(
         [
             build_rushmore(books),
-            build_latest(books),
             category_menu_html(),
+            build_latest(books),
             """
 <!-- Optional footer CTA -->
 <section class="pb-6 text-center">
