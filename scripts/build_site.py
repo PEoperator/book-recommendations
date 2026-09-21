@@ -109,6 +109,32 @@ def site_nav_html(current: str) -> str:
 """.strip()
 
 
+def category_nav_html(current_id: str | None = None) -> str:
+    """Jump links across the six category pages (+ Home / View all). current_id is a category id or 'view-all'."""
+    links = []
+    links.append(
+        '<a href="index.html"'
+        + (' class="is-current"' if current_id == "home" else "")
+        + ">Home</a>"
+    )
+    for c in CATEGORIES:
+        cur = ' class="is-current"' if current_id == c["id"] else ""
+        links.append(f'<a href="{c["slug"]}"{cur}>{c["title"]}</a>')
+    links.append(
+        '<a href="view-all.html"'
+        + (' class="is-current"' if current_id == "view-all" else "")
+        + ">View all</a>"
+    )
+    inner = "\n    ".join(links)
+    return f"""
+<nav class="category-nav" aria-label="Categories">
+  <div class="category-nav-inner">
+    {inner}
+  </div>
+</nav>
+""".strip()
+
+
 def head_html(page_title: str, description: str) -> str:
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -284,6 +310,7 @@ def page_shell(
     main_inner: str,
     include_hero: bool = True,
     include_social: bool = True,
+    category_nav_current: str | None = None,
 ) -> str:
     parts = [head_html(page_title, description)]
     if include_hero:
@@ -298,6 +325,8 @@ def page_shell(
             "</header>"
         )
     parts.append(site_nav_html(nav_current))
+    if category_nav_current is not None:
+        parts.append(category_nav_html(category_nav_current))
     if include_social:
         parts.append(SOCIAL)
     parts.append(f'<main class="flex-grow max-w-7xl mx-auto px-6 py-6">\n{filter_bar_html()}\n{main_inner}\n</main>')
@@ -390,6 +419,7 @@ def main() -> None:
             main_inner,
             include_hero=False,
             include_social=False,
+            category_nav_current=c["id"],
         )
         (ROOT / c["slug"]).write_text(page, encoding="utf-8")
 
@@ -419,6 +449,7 @@ def main() -> None:
         view_main,
         include_hero=False,
         include_social=False,
+        category_nav_current="view-all",
     )
     (ROOT / "view-all.html").write_text(view_all, encoding="utf-8")
 

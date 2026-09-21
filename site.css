@@ -92,3 +92,47 @@ body.filter-favorites .favorites-empty.is-visible {
   font-size: 0.875rem;
   color: #6b7280;
 }
+
+/* Category jump nav (category pages + view-all) */
+.category-nav {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+}
+.category-nav-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem 0.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.category-nav a {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #374151;
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 9999px;
+  border: 1.5px solid #d1d5db;
+  background: #f9fafb;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.category-nav a:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+  color: #111827;
+}
+.category-nav a.is-current {
+  background: #111827;
+  color: #fbbf24;
+  border-color: #111827;
+}
+@media (min-width: 640px) {
+  .category-nav a { font-size: 0.875rem; padding: 0.45rem 0.9rem; }
+}

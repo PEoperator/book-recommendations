@@ -236,9 +236,9 @@
       "index": 29,
       "title": "Double Your Profits: In Six Months or Less",
       "author": "Bob Fifer",
-      "favorite": false,
+      "favorite": true,
       "rushmore": false,
-      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card\">\n    <a href=\"https://www.amazon.com/dp/088730740X?tag=peoperator-20\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/614H4NbFgLL._SL1015_.jpg\" alt=\"Crossing the Chasm by Geoffrey A. Moore\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">Double Your Profits: In Six Months or Less</h3>\n        <p class=\"text-gray-600 mb-3\">Bob Fifer</p>\n      </div>\n    </a>\n  </article>"
+      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card relative\">\n        <div class=\"absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md\">\n    <img src=\"lightning.png\" alt=\"Lightning Badge\" class=\"w-full h-full object-cover\">\n  </div>\n        \n    <a href=\"https://www.amazon.com/dp/088730740X?tag=peoperator-20\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/614H4NbFgLL._SL1015_.jpg\" alt=\"Crossing the Chasm by Geoffrey A. Moore\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">Double Your Profits: In Six Months or Less</h3>\n        <p class=\"text-gray-600 mb-3\">Bob Fifer</p>\n      </div>\n    </a>\n  </article>"
     },
     {
       "index": 30,
@@ -300,9 +300,9 @@
       "index": 37,
       "title": "How To Live An Extraordinary Life",
       "author": "Anthony Pompliano",
-      "favorite": false,
+      "favorite": true,
       "rushmore": false,
-      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card\">\n    <a href=\"https://amzn.to/3MqCH36\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/71ydZhyQjjL._SL1500_.jpg\" alt=\"How To Live An Extraordinary Life\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">How To Live An Extraordinary Life</h3>\n        <p class=\"text-gray-600 mb-3\">Anthony Pompliano</p>\n      </div>\n    </a>\n  </article>"
+      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card relative\">\n        <div class=\"absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md\">\n    <img src=\"lightning.png\" alt=\"Lightning Badge\" class=\"w-full h-full object-cover\">\n  </div>\n        \n    <a href=\"https://amzn.to/3MqCH36\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/71ydZhyQjjL._SL1500_.jpg\" alt=\"How To Live An Extraordinary Life\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">How To Live An Extraordinary Life</h3>\n        <p class=\"text-gray-600 mb-3\">Anthony Pompliano</p>\n      </div>\n    </a>\n  </article>"
     },
     {
       "index": 38,
@@ -348,9 +348,9 @@
       "index": 43,
       "title": "The Compounders",
       "author": "Oddbjørn Dybvad, Kjetil Nyland, Adnan Hadžiefendić",
-      "favorite": false,
+      "favorite": true,
       "rushmore": false,
-      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card\">\n    <a href=\"https://amzn.to/3M5b0wY\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/61-NVCmqnsL._SL1360_.jpg\" alt=\"The Compounders\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">The Compounders</h3>\n        <p class=\"text-gray-600 mb-3\">Oddbjørn Dybvad, Kjetil Nyland, Adnan Hadžiefendić</p>\n      </div>\n    </a>\n  </article>"
+      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card relative\">\n        <div class=\"absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md\">\n    <img src=\"lightning.png\" alt=\"Lightning Badge\" class=\"w-full h-full object-cover\">\n  </div>\n        \n    <a href=\"https://amzn.to/3M5b0wY\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/61-NVCmqnsL._SL1360_.jpg\" alt=\"The Compounders\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">The Compounders</h3>\n        <p class=\"text-gray-600 mb-3\">Oddbjørn Dybvad, Kjetil Nyland, Adnan Hadžiefendić</p>\n      </div>\n    </a>\n  </article>"
     },
     {
       "index": 44,
@@ -372,9 +372,9 @@
       "index": 46,
       "title": "Cable Cowboy",
       "author": "Mark Robichaux",
-      "favorite": false,
+      "favorite": true,
       "rushmore": false,
-      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card\">\n    <a href=\"https://amzn.to/4p7K3aw\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/714NLXZSKIL._SL1500_.jpg\" alt=\"Cable Cowboy\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">Cable Cowboy</h3>\n        <p class=\"text-gray-600 mb-3\">Mark Robichaux</p>\n      </div>\n    </a>\n  </article>"
+      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card relative\">\n        <div class=\"absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md\">\n    <img src=\"lightning.png\" alt=\"Lightning Badge\" class=\"w-full h-full object-cover\">\n  </div>\n        \n    <a href=\"https://amzn.to/4p7K3aw\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/714NLXZSKIL._SL1500_.jpg\" alt=\"Cable Cowboy\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">Cable Cowboy</h3>\n        <p class=\"text-gray-600 mb-3\">Mark Robichaux</p>\n      </div>\n    </a>\n  </article>"
     },
     {
       "index": 47,
@@ -404,17 +404,17 @@
       "index": 50,
       "title": "How the Scots Invented the Modern World",
       "author": "Arthur Herman",
-      "favorite": false,
+      "favorite": true,
       "rushmore": false,
-      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card\">\n    <a href=\"https://amzn.to/3XnEQPv\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/71qODMUUDRL._SL1236_.jpg\" alt=\"How the Scots Invented the Modern World\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">How the Scots Invented the Modern World</h3>\n        <p class=\"text-gray-600 mb-3\">Arthur Herman</p>\n      </div>\n    </a>\n  </article>"
+      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card relative\">\n        <div class=\"absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md\">\n    <img src=\"lightning.png\" alt=\"Lightning Badge\" class=\"w-full h-full object-cover\">\n  </div>\n        \n    <a href=\"https://amzn.to/3XnEQPv\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/71qODMUUDRL._SL1236_.jpg\" alt=\"How the Scots Invented the Modern World\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">How the Scots Invented the Modern World</h3>\n        <p class=\"text-gray-600 mb-3\">Arthur Herman</p>\n      </div>\n    </a>\n  </article>"
     },
     {
       "index": 51,
       "title": "The Simple Path to Wealth",
       "author": "JL Collins",
-      "favorite": false,
+      "favorite": true,
       "rushmore": false,
-      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card\">\n    <a href=\"https://www.amazon.com/dp/1533667926?tag=peoperator-20\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/615WSAiBLaL._SL1360_.jpg\" alt=\"The Simple Path to Wealth by JL Collins\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">The Simple Path to Wealth</h3>\n        <p class=\"text-gray-600 mb-3\">JL Collins</p>\n      </div>\n    </a>\n  </article>"
+      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card relative\">\n        <div class=\"absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md\">\n    <img src=\"lightning.png\" alt=\"Lightning Badge\" class=\"w-full h-full object-cover\">\n  </div>\n        \n    <a href=\"https://www.amazon.com/dp/1533667926?tag=peoperator-20\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/615WSAiBLaL._SL1360_.jpg\" alt=\"The Simple Path to Wealth by JL Collins\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">The Simple Path to Wealth</h3>\n        <p class=\"text-gray-600 mb-3\">JL Collins</p>\n      </div>\n    </a>\n  </article>"
     },
     {
       "index": 52,
@@ -572,9 +572,9 @@
       "index": 71,
       "title": "American Nations",
       "author": "Colin Woodard",
-      "favorite": false,
+      "favorite": true,
       "rushmore": false,
-      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card\">\n    <a href=\"https://www.amazon.com/dp/0143122029?tag=peoperator-20\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/91XyV+GjdSL._SL1500_.jpg\" alt=\"American Nations by Colin Woodard\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">American Nations</h3>\n        <p class=\"text-gray-600 mb-3\">Colin Woodard</p>\n      </div>\n    </a>\n  </article>"
+      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card relative\">\n        <div class=\"absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md\">\n    <img src=\"lightning.png\" alt=\"Lightning Badge\" class=\"w-full h-full object-cover\">\n  </div>\n        \n    <a href=\"https://www.amazon.com/dp/0143122029?tag=peoperator-20\" target=\"_blank\" rel=\"noopener\">\n      <img src=\"https://m.media-amazon.com/images/I/91XyV+GjdSL._SL1500_.jpg\" alt=\"American Nations by Colin Woodard\" class=\"book-cover\" loading=\"lazy\">\n      <div class=\"p-6\">\n        <h3 class=\"text-xl font-bold mb-2\">American Nations</h3>\n        <p class=\"text-gray-600 mb-3\">Colin Woodard</p>\n      </div>\n    </a>\n  </article>"
     },
     {
       "index": 72,
@@ -1164,9 +1164,9 @@
       "index": 145,
       "title": "Letters From a Self-Made Merchant to His Son",
       "author": "George Horace Lorimer",
-      "favorite": false,
+      "favorite": true,
       "rushmore": false,
-      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card relative\">\n  <a href=\"https://www.amazon.com/dp/B00O5D6WIC?tag=peoperator-20\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"https://m.media-amazon.com/images/I/716aH6iGzKL._SL1500_.jpg\" alt=\"Letters From a Self-Made Merchant to His Son\" class=\"book-cover\" loading=\"lazy\">\n    <div class=\"p-6\">\n      <h3 class=\"text-xl font-bold mb-2\">Letters From a Self-Made Merchant to His Son</h3>\n      <p class=\"text-gray-600 mb-3\">George Horace Lorimer</p>\n    </div>\n  </a>\n</article>"
+      "html": "<article class=\"bg-white rounded-2xl shadow-lg overflow-hidden book-card relative\">\n        <div class=\"absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md\">\n    <img src=\"lightning.png\" alt=\"Lightning Badge\" class=\"w-full h-full object-cover\">\n  </div>\n        \n  <a href=\"https://www.amazon.com/dp/B00O5D6WIC?tag=peoperator-20\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"https://m.media-amazon.com/images/I/716aH6iGzKL._SL1500_.jpg\" alt=\"Letters From a Self-Made Merchant to His Son\" class=\"book-cover\" loading=\"lazy\">\n    <div class=\"p-6\">\n      <h3 class=\"text-xl font-bold mb-2\">Letters From a Self-Made Merchant to His Son</h3>\n      <p class=\"text-gray-600 mb-3\">George Horace Lorimer</p>\n    </div>\n  </a>\n</article>"
     },
     {
       "index": 146,
