@@ -83,14 +83,19 @@ def mark_book_card(html: str, favorite: bool) -> str:
     return new_open + html[m.end() :]
 
 
-def filter_bar_html() -> str:
-    return """
-<div class="filter-bar">
-  <div class="filter-toggles" role="group" aria-label="Book filter">
+def filter_bar_html(include_favorites: bool = True) -> str:
+    toggles = (
+        """  <div class="filter-toggles" role="group" aria-label="Book filter">
     <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
     <button type="button" class="filter-btn" data-filter="favorites" aria-pressed="false">⚡ Favorites</button>
   </div>
-  <label class="book-search-label">
+"""
+        if include_favorites
+        else ""
+    )
+    return f"""
+<div class="filter-bar">
+{toggles}  <label class="book-search-label">
     <span class="visually-hidden">Search books</span>
     <input type="search" id="book-search" class="book-search" placeholder="Search titles &amp; authors…" autocomplete="off" spellcheck="false">
   </label>
@@ -335,6 +340,7 @@ def page_shell(
     main_inner: str,
     include_hero: bool = True,
     include_social: bool = True,
+    include_favorites: bool = True,
     category_nav_current: str | None = None,
     body_attrs: str = "",
 ) -> str:
@@ -364,7 +370,7 @@ def page_shell(
         parts.append(category_nav_html(category_nav_current))
     if include_social:
         parts.append(SOCIAL)
-    parts.append(f'<main class="flex-grow max-w-7xl mx-auto px-6 py-6">\n{filter_bar_html()}\n{main_inner}\n</main>')
+    parts.append(f'<main class="flex-grow max-w-7xl mx-auto px-6 py-6">\n{filter_bar_html(include_favorites)}\n{main_inner}\n</main>')
     parts.append(FOOTER)
     return "\n".join(parts) + "\n"
 
@@ -427,6 +433,7 @@ def main() -> None:
         home_main,
         include_hero=True,
         include_social=True,
+        include_favorites=False,
         body_attrs='data-page="home"',
     )
     (ROOT / "index.html").write_text(home, encoding="utf-8")
