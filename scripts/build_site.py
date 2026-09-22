@@ -309,7 +309,7 @@ def build_rushmore(books: list[dict]) -> str:
 <section class="pb-10" id="rushmore">
   <div class="max-w-7xl mx-auto px-6">
     {section_heading("Mt. Rushmore")}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-6">
+    <div class="rushmore-grid grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 mt-6">
 {chr(10).join(cards)}
     </div>
     <div class="border-b-2 border-gray-900 mt-8"></div>
