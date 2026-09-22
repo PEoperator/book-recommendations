@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build peoperator.co home IA + category pages + view-all + favorites filter."""
+"""Build peoperator.co home IA + category pages + view-all + favorites/search filter."""
 from __future__ import annotations
 
 import json
@@ -85,10 +85,17 @@ def mark_book_card(html: str, favorite: bool) -> str:
 
 def filter_bar_html() -> str:
     return """
-<div class="filter-bar" role="group" aria-label="Book filter">
-  <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
-  <button type="button" class="filter-btn" data-filter="favorites" aria-pressed="false">⚡ Favorites</button>
+<div class="filter-bar">
+  <div class="filter-toggles" role="group" aria-label="Book filter">
+    <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="filter-btn" data-filter="favorites" aria-pressed="false">⚡ Favorites</button>
+  </div>
+  <label class="book-search-label">
+    <span class="visually-hidden">Search books</span>
+    <input type="search" id="book-search" class="book-search" placeholder="Search titles &amp; authors…" autocomplete="off" spellcheck="false">
+  </label>
 </div>
+<p id="filter-empty" class="filter-empty" role="status" aria-live="polite"></p>
 """.strip()
 
 
@@ -270,6 +277,24 @@ def category_menu_html() -> str:
 """.rstrip()
 
 
+
+def build_home_search_results(books: list[dict]) -> str:
+    """Full catalog grid for home site-wide search (hidden until query is non-empty)."""
+    all_books = sorted(books, key=lambda b: sort_title_key(b["title"]))
+    cards = [mark_book_card(b["html"], b["favorite"]) for b in all_books]
+    cols = "grid grid-cols-2 min-[480px]:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 md:gap-8 mt-6"
+    return f"""
+<!-- HOME SITE-WIDE SEARCH RESULTS (shown when search query is non-empty) -->
+<section class="pb-10" id="home-search-results" hidden aria-hidden="true">
+  <div class="max-w-7xl mx-auto px-6">
+    {section_heading("Search results")}
+    <p class="text-gray-600 mb-2" id="home-search-count" aria-live="polite"></p>
+    {books_grid(cards, grid_id="home-search-grid", cols=cols)}
+  </div>
+</section>
+""".rstrip()
+
+
 def build_rushmore(books: list[dict]) -> str:
     rush = [b for b in books if b["rushmore"]]
     cards = [mark_book_card(b["html"], b["favorite"]) for b in rush]
@@ -311,13 +336,23 @@ def page_shell(
     include_hero: bool = True,
     include_social: bool = True,
     category_nav_current: str | None = None,
+    body_attrs: str = "",
 ) -> str:
+    extra = (" " + body_attrs.strip()) if body_attrs.strip() else ""
     parts = [head_html(page_title, description)]
     if include_hero:
-        parts.append(HEADER_HERO)
+        # Inject optional body attrs into HEADER_HERO opening <body>
+        hero = HEADER_HERO
+        if extra:
+            hero = hero.replace(
+                '<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">',
+                f'<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col"{extra}>',
+                1,
+            )
+        parts.append(hero)
     else:
         parts.append(
-            '<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">\n'
+            f'<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col"{extra}>\n'
             '<header class="bg-black text-white py-8">\n'
             '  <div class="max-w-6xl mx-auto px-4 text-center">\n'
             f'    <h1 class="text-3xl sm:text-4xl font-bold">{page_title}</h1>\n'
@@ -365,14 +400,17 @@ def main() -> None:
         b["html"] = mark_book_card(b["html"], b["favorite"])
 
     # --- Home ---
+    # Order: search-results (hidden) first so it appears above IA when shown,
+    # then Rushmore → categories → Latest → CTA (empty-query home IA).
     home_main = "\n\n".join(
         [
+            build_home_search_results(books),
             build_rushmore(books),
             category_menu_html(),
             build_latest(books),
             """
 <!-- Optional footer CTA -->
-<section class="pb-6 text-center">
+<section class="pb-6 text-center" id="home-view-all-cta">
   <div class="inline-flex flex-wrap justify-center gap-4">
     <a href="view-all.html" class="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white font-bold py-3 px-6 rounded-full transition shadow-lg">
       View all books A–Z
@@ -389,6 +427,7 @@ def main() -> None:
         home_main,
         include_hero=True,
         include_social=True,
+        body_attrs='data-page="home"',
     )
     (ROOT / "index.html").write_text(home, encoding="utf-8")
 
@@ -397,17 +436,11 @@ def main() -> None:
         cat_books = [b for b in books if b["category"] == c["id"]]
         cat_books.sort(key=lambda b: sort_title_key(b["title"]))
         cards = [b["html"] for b in cat_books]
-        empty = (
-            '<p id="favorites-empty" class="favorites-empty">'
-            "No favorites in this category."
-            "</p>"
-        )
         main_inner = f"""
 <section class="pb-10">
   <div class="max-w-7xl mx-auto">
     {section_heading(c["title"])}
     <p class="text-gray-600 mb-4">{c["blurb"]} · {len(cat_books)} books · A–Z</p>
-    {empty}
     {books_grid(cards)}
   </div>
 </section>
@@ -426,18 +459,11 @@ def main() -> None:
     # --- View all ---
     all_books = sorted(books, key=lambda b: sort_title_key(b["title"]))
     cards = [b["html"] for b in all_books]
-    empty = (
-        '<p id="favorites-empty" class="favorites-empty">'
-        "No favorites in this category."
-        "</p>"
-    )
-    # Reuse same empty copy per spec for category/view-all
     view_main = f"""
 <section class="pb-10">
   <div class="max-w-7xl mx-auto">
     {section_heading("View all")}
     <p class="text-gray-600 mb-4">{len(all_books)} books · A–Z by title</p>
-    {empty}
     {books_grid(cards)}
   </div>
 </section>
