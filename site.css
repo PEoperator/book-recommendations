@@ -80,7 +80,24 @@
 [data-book-card].is-filtered-out {
   display: none !important;
 }
-/* Home: category menu cards are not [data-book-card] — stay visible */
+
+/*
+ * Home search UX:
+ * - Empty query: Rushmore → categories → Latest (category menu visible).
+ * - Non-empty query: body.home-search-active; JS hides Rushmore/categories/Latest/CTA
+ *   via [hidden] and shows #home-search-results (full catalog). Category menu is hidden
+ *   while results show (cleaner than dimming — browse IA yields to search).
+ */
+body.home-search-active #home-search-results[hidden] {
+  /* JS removes [hidden] when active; keep rule intentional no-op fallback */
+}
+#home-search-results[hidden],
+#rushmore[hidden],
+#categories[hidden],
+#latest[hidden],
+#home-view-all-cta[hidden] {
+  display: none !important;
+}
 
 .filter-empty {
   display: none;

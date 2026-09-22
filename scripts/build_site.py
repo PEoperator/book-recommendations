@@ -277,6 +277,24 @@ def category_menu_html() -> str:
 """.rstrip()
 
 
+
+def build_home_search_results(books: list[dict]) -> str:
+    """Full catalog grid for home site-wide search (hidden until query is non-empty)."""
+    all_books = sorted(books, key=lambda b: sort_title_key(b["title"]))
+    cards = [mark_book_card(b["html"], b["favorite"]) for b in all_books]
+    cols = "grid grid-cols-2 min-[480px]:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 md:gap-8 mt-6"
+    return f"""
+<!-- HOME SITE-WIDE SEARCH RESULTS (shown when search query is non-empty) -->
+<section class="pb-10" id="home-search-results" hidden aria-hidden="true">
+  <div class="max-w-7xl mx-auto px-6">
+    {section_heading("Search results")}
+    <p class="text-gray-600 mb-2" id="home-search-count" aria-live="polite"></p>
+    {books_grid(cards, grid_id="home-search-grid", cols=cols)}
+  </div>
+</section>
+""".rstrip()
+
+
 def build_rushmore(books: list[dict]) -> str:
     rush = [b for b in books if b["rushmore"]]
     cards = [mark_book_card(b["html"], b["favorite"]) for b in rush]
@@ -318,13 +336,23 @@ def page_shell(
     include_hero: bool = True,
     include_social: bool = True,
     category_nav_current: str | None = None,
+    body_attrs: str = "",
 ) -> str:
+    extra = (" " + body_attrs.strip()) if body_attrs.strip() else ""
     parts = [head_html(page_title, description)]
     if include_hero:
-        parts.append(HEADER_HERO)
+        # Inject optional body attrs into HEADER_HERO opening <body>
+        hero = HEADER_HERO
+        if extra:
+            hero = hero.replace(
+                '<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">',
+                f'<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col"{extra}>',
+                1,
+            )
+        parts.append(hero)
     else:
         parts.append(
-            '<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">\n'
+            f'<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col"{extra}>\n'
             '<header class="bg-black text-white py-8">\n'
             '  <div class="max-w-6xl mx-auto px-4 text-center">\n'
             f'    <h1 class="text-3xl sm:text-4xl font-bold">{page_title}</h1>\n'
@@ -372,14 +400,17 @@ def main() -> None:
         b["html"] = mark_book_card(b["html"], b["favorite"])
 
     # --- Home ---
+    # Order: search-results (hidden) first so it appears above IA when shown,
+    # then Rushmore → categories → Latest → CTA (empty-query home IA).
     home_main = "\n\n".join(
         [
+            build_home_search_results(books),
             build_rushmore(books),
             category_menu_html(),
             build_latest(books),
             """
 <!-- Optional footer CTA -->
-<section class="pb-6 text-center">
+<section class="pb-6 text-center" id="home-view-all-cta">
   <div class="inline-flex flex-wrap justify-center gap-4">
     <a href="view-all.html" class="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white font-bold py-3 px-6 rounded-full transition shadow-lg">
       View all books A–Z
@@ -396,6 +427,7 @@ def main() -> None:
         home_main,
         include_hero=True,
         include_social=True,
+        body_attrs='data-page="home"',
     )
     (ROOT / "index.html").write_text(home, encoding="utf-8")
 
