@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build peoperator.co home IA + category pages + view-all + favorites filter."""
+"""Build peoperator.co home IA + category pages + view-all + favorites/search filter."""
 from __future__ import annotations
 
 import json
@@ -85,10 +85,17 @@ def mark_book_card(html: str, favorite: bool) -> str:
 
 def filter_bar_html() -> str:
     return """
-<div class="filter-bar" role="group" aria-label="Book filter">
-  <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
-  <button type="button" class="filter-btn" data-filter="favorites" aria-pressed="false">⚡ Favorites</button>
+<div class="filter-bar">
+  <div class="filter-toggles" role="group" aria-label="Book filter">
+    <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="filter-btn" data-filter="favorites" aria-pressed="false">⚡ Favorites</button>
+  </div>
+  <label class="book-search-label">
+    <span class="visually-hidden">Search books</span>
+    <input type="search" id="book-search" class="book-search" placeholder="Search titles &amp; authors…" autocomplete="off" spellcheck="false">
+  </label>
 </div>
+<p id="filter-empty" class="filter-empty" role="status" aria-live="polite"></p>
 """.strip()
 
 
@@ -397,17 +404,11 @@ def main() -> None:
         cat_books = [b for b in books if b["category"] == c["id"]]
         cat_books.sort(key=lambda b: sort_title_key(b["title"]))
         cards = [b["html"] for b in cat_books]
-        empty = (
-            '<p id="favorites-empty" class="favorites-empty">'
-            "No favorites in this category."
-            "</p>"
-        )
         main_inner = f"""
 <section class="pb-10">
   <div class="max-w-7xl mx-auto">
     {section_heading(c["title"])}
     <p class="text-gray-600 mb-4">{c["blurb"]} · {len(cat_books)} books · A–Z</p>
-    {empty}
     {books_grid(cards)}
   </div>
 </section>
@@ -426,18 +427,11 @@ def main() -> None:
     # --- View all ---
     all_books = sorted(books, key=lambda b: sort_title_key(b["title"]))
     cards = [b["html"] for b in all_books]
-    empty = (
-        '<p id="favorites-empty" class="favorites-empty">'
-        "No favorites in this category."
-        "</p>"
-    )
-    # Reuse same empty copy per spec for category/view-all
     view_main = f"""
 <section class="pb-10">
   <div class="max-w-7xl mx-auto">
     {section_heading("View all")}
     <p class="text-gray-600 mb-4">{len(all_books)} books · A–Z by title</p>
-    {empty}
     {books_grid(cards)}
   </div>
 </section>

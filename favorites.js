@@ -1,10 +1,50 @@
 /**
- * All | ⚡ Favorites filter — no persistence (resets to All on every load).
+ * All | ⚡ Favorites + client-side search.
+ * No persistence (resets to All / empty query on every load).
+ * Search composes with Favorites: when Favorites is on, search filters within favorites.
  */
 (function () {
-  function applyFilter(mode) {
-    var isFav = mode === "favorites";
-    document.body.classList.toggle("filter-favorites", isFav);
+  var mode = "all";
+  var query = "";
+
+  function cardSearchText(card) {
+    // Title, author, and any visible blurb/notes in the card text block
+    var body = card.querySelector(".p-6");
+    var raw = body ? body.textContent || "" : "";
+    if (!raw) {
+      var parts = [];
+      card.querySelectorAll("h3, p").forEach(function (el) {
+        parts.push(el.textContent || "");
+      });
+      raw = parts.join(" ");
+    }
+    return raw.replace(/\s+/g, " ").trim().toLowerCase();
+  }
+
+  function cardMatches(card) {
+    if (mode === "favorites" && card.getAttribute("data-favorite") !== "true") {
+      return false;
+    }
+    if (!query) return true;
+    return cardSearchText(card).indexOf(query) !== -1;
+  }
+
+  function emptyMessage() {
+    if (mode === "favorites" && query) {
+      return "No favorites match your search.";
+    }
+    if (query) {
+      return "No books match your search.";
+    }
+    if (mode === "favorites") {
+      return "No favorites in this category.";
+    }
+    return "";
+  }
+
+  function applyFilters() {
+    document.body.classList.toggle("filter-favorites", mode === "favorites");
+    document.body.classList.toggle("filter-search-active", !!query);
 
     document.querySelectorAll(".filter-btn").forEach(function (btn) {
       var active = btn.getAttribute("data-filter") === mode;
@@ -12,17 +52,21 @@
       btn.setAttribute("aria-pressed", active ? "true" : "false");
     });
 
-    // Empty-state for category / view-all pages
-    var empty = document.getElementById("favorites-empty");
+    var cards = document.querySelectorAll("[data-book-card]");
+    var visible = 0;
+    cards.forEach(function (card) {
+      var match = cardMatches(card);
+      card.classList.toggle("is-filtered-out", !match);
+      if (match) visible += 1;
+    });
+
+    var empty = document.getElementById("filter-empty");
     if (empty) {
-      var cards = document.querySelectorAll("[data-book-card]");
-      var anyFav = false;
-      cards.forEach(function (c) {
-        if (c.getAttribute("data-favorite") === "true") anyFav = true;
-      });
-      var showEmpty = isFav && !anyFav;
+      var showEmpty = visible === 0 && (mode === "favorites" || !!query);
+      empty.textContent = showEmpty ? emptyMessage() : "";
       empty.classList.toggle("is-visible", showEmpty);
-      // Also hide the grid when empty
+
+      // Category / view-all single grid
       var grid = document.getElementById("books-grid");
       if (grid) {
         grid.style.display = showEmpty ? "none" : "";
@@ -33,11 +77,25 @@
   function init() {
     document.querySelectorAll(".filter-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        applyFilter(btn.getAttribute("data-filter") || "all");
+        mode = btn.getAttribute("data-filter") || "all";
+        applyFilters();
       });
     });
-    // Default All every load — no sessionStorage/localStorage/URL
-    applyFilter("all");
+
+    var input = document.getElementById("book-search");
+    if (input) {
+      input.addEventListener("input", function () {
+        query = (input.value || "").trim().toLowerCase();
+        applyFilters();
+      });
+      // Clear (search type=search X) also fires input in modern browsers
+    }
+
+    // Default All + empty query every load — no sessionStorage/localStorage/URL
+    mode = "all";
+    query = "";
+    if (input) input.value = "";
+    applyFilters();
   }
 
   if (document.readyState === "loading") {

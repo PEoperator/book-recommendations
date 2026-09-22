@@ -78,10 +78,17 @@
   </div>
 </div>
 <main class="flex-grow max-w-7xl mx-auto px-6 py-6">
-<div class="filter-bar" role="group" aria-label="Book filter">
-  <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
-  <button type="button" class="filter-btn" data-filter="favorites" aria-pressed="false">⚡ Favorites</button>
+<div class="filter-bar">
+  <div class="filter-toggles" role="group" aria-label="Book filter">
+    <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="filter-btn" data-filter="favorites" aria-pressed="false">⚡ Favorites</button>
+  </div>
+  <label class="book-search-label">
+    <span class="visually-hidden">Search books</span>
+    <input type="search" id="book-search" class="book-search" placeholder="Search titles &amp; authors…" autocomplete="off" spellcheck="false">
+  </label>
 </div>
+<p id="filter-empty" class="filter-empty" role="status" aria-live="polite"></p>
 
 <!-- MT RUSHMORE SECTION -->
 <section class="pb-10" id="rushmore">
