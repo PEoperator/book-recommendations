@@ -8,6 +8,35 @@
   height: auto;
 }
 
+
+/* Keep the four featured Rushmore cards compact on phone widths only. */
+@media (max-width: 639px) {
+  #rushmore .rushmore-grid {
+    max-width: 26rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #rushmore .book-card > a > div {
+    padding: 0.75rem;
+  }
+  #rushmore .book-card h3 {
+    font-size: 1rem;
+    line-height: 1.25;
+    margin-bottom: 0.35rem;
+  }
+  #rushmore .book-card p {
+    font-size: 0.8125rem;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+  }
+  #rushmore .book-card > div.absolute {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
 /* Favorites + search filter bar */
 .filter-bar {
   display: flex;

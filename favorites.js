@@ -1,12 +1,12 @@
 /**
- * All | ⚡ Favorites + client-side search.
+ * All | ⚡ Favorites + client-side search on category and View all pages.
  * No persistence (resets to All / empty query on every load).
- * Search composes with Favorites: when Favorites is on, search filters within favorites.
+ * Search composes with Favorites on category and View all pages.
  *
  * Home (data-page="home"):
- *   - Empty query: normal IA (Rushmore → categories → Latest); Favorites filters Rushmore/Latest only.
+ *   - Empty query: normal IA (Rushmore → categories → Latest).
  *   - Non-empty query: hide Rushmore + categories + Latest + CTA; show full-catalog Search results.
- * Category / View all: search stays page-scoped (cards already on the page).
+ * Category / View all: retain the All / Favorites controls and page-scoped search.
  */
 (function () {
   var mode = "all";
@@ -30,8 +30,12 @@
     return raw.replace(/\s+/g, " ").trim().toLowerCase();
   }
 
+  function favoritesActive() {
+    return !isHomePage() && mode === "favorites";
+  }
+
   function cardMatches(card) {
-    if (mode === "favorites" && card.getAttribute("data-favorite") !== "true") {
+    if (favoritesActive() && card.getAttribute("data-favorite") !== "true") {
       return false;
     }
     if (!query) return true;
@@ -39,13 +43,13 @@
   }
 
   function emptyMessage() {
-    if (mode === "favorites" && query) {
+    if (favoritesActive() && query) {
       return "No favorites match your search.";
     }
     if (query) {
       return "No books match your search.";
     }
-    if (mode === "favorites") {
+    if (favoritesActive()) {
       return "No favorites in this category.";
     }
     return "";
@@ -104,7 +108,7 @@
   }
 
   function applyFilters() {
-    document.body.classList.toggle("filter-favorites", mode === "favorites");
+    document.body.classList.toggle("filter-favorites", favoritesActive());
     document.body.classList.toggle("filter-search-active", !!query);
 
     document.querySelectorAll(".filter-btn").forEach(function (btn) {
@@ -141,7 +145,7 @@
       if (isHomePage() && query) {
         var label =
           visible === 1 ? "1 book" : visible + " books";
-        if (mode === "favorites") {
+        if (favoritesActive()) {
           countEl.textContent = label + " in favorites matching “" + query + "”";
         } else {
           countEl.textContent = label + " matching “" + query + "”";
@@ -153,7 +157,7 @@
 
     var empty = document.getElementById("filter-empty");
     if (empty) {
-      var showEmpty = visible === 0 && (mode === "favorites" || !!query);
+      var showEmpty = visible === 0 && (favoritesActive() || !!query);
       empty.textContent = showEmpty ? emptyMessage() : "";
       empty.classList.toggle("is-visible", showEmpty);
 
