@@ -224,3 +224,9 @@ body.home-search-active #home-search-results[hidden] {
 @media (min-width: 640px) {
   .category-nav a { font-size: 0.875rem; padding: 0.45rem 0.9rem; }
 }
+
+/* X recommend intent button (footer) */
+.x-recommend-btn:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 3px;
+}
