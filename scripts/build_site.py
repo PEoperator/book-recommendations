@@ -229,7 +229,19 @@ SOCIAL = """
 FOOTER = """
 <!-- Sticky Footer -->
 <footer class="w-full bg-gray-900 text-white mt-auto">
-  <div class="max-w-7xl mx-auto px-6 py-10 text-center space-y-4">
+  <div class="max-w-7xl mx-auto px-6 py-10 text-center space-y-5">
+    <div>
+      <a href="https://x.com/intent/tweet?text=Book%20rec%20for%20%40PEoperator%3A%20%5Bdelete%20this%20and%20provide%20your%20book%20recommendation%21%5D"
+         target="_blank" rel="noopener"
+         class="x-recommend-btn inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-gray-900 font-bold py-3 px-6 rounded-full transition shadow-lg text-base"
+         aria-label="Recommend a book to @PEoperator on X">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        Recommend a book
+      </a>
+      <p class="mt-3 text-sm text-gray-400">Tweet a rec to @PEoperator</p>
+    </div>
     <p class="text-sm italic opacity-75 leading-snug">
       Links on this site may earn a small commission from qualifying purchases, at no extra cost to you. All earnings go straight back into the next recommendation!
     </p>
