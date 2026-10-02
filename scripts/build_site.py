@@ -2,6 +2,7 @@
 """Build peoperator.co home IA + category pages + view-all + favorites/search filter."""
 from __future__ import annotations
 
+import html
 import json
 import re
 from pathlib import Path
@@ -186,17 +187,54 @@ def category_nav_html(current_id: str | None = None) -> str:
 """.strip()
 
 
-def head_html(page_title: str, description: str) -> str:
+SITE_URL = "https://peoperator.co"
+SITE_NAME = "PE Operator's Book Recommendations"
+SITE_TAGLINE = "Books that actually changed how I think"
+OG_IMAGE = f"{SITE_URL}/og.png"
+OG_IMAGE_ALT = f"{SITE_NAME}: {SITE_TAGLINE}. peoperator.co"
+TWITTER_SITE = "@PEoperator"
+
+
+def attr(value: str) -> str:
+    """Escape for a double-quoted attribute (&, <, >, \"); apostrophes stay literal."""
+    return html.escape(value, quote=False).replace('"', "&quot;")
+
+
+def social_meta_html(page_title: str, description: str, path: str) -> str:
+    """Canonical + Open Graph + Twitter card tags. path is '' for home or e.g. 'fiction.html'."""
+    url = f"{SITE_URL}/{path}"
+    return f"""  <link rel="canonical" href="{attr(url)}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{attr(SITE_NAME)}">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="{attr(page_title)}">
+  <meta property="og:description" content="{attr(description)}">
+  <meta property="og:url" content="{attr(url)}">
+  <meta property="og:image" content="{attr(OG_IMAGE)}">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{attr(OG_IMAGE_ALT)}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="{attr(TWITTER_SITE)}">
+  <meta name="twitter:title" content="{attr(page_title)}">
+  <meta name="twitter:description" content="{attr(description)}">
+  <meta name="twitter:image" content="{attr(OG_IMAGE)}">
+  <meta name="twitter:image:alt" content="{attr(OG_IMAGE_ALT)}">
+"""
+
+
+def head_html(page_title: str, description: str, path: str) -> str:
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{page_title}</title>
+  <title>{html.escape(page_title, quote=False)}</title>
   <link rel="icon" href="/favicon.png" type="image/png" sizes="any">
   <link rel="apple-touch-icon" href="/favicon.png" sizes="180x180">
-  <meta name="description" content="{description}">
-  <meta name="theme-color" content="#2d2e26">
+  <meta name="description" content="{attr(description)}">
+{social_meta_html(page_title, description, path)}  <meta name="theme-color" content="#2d2e26">
   <link rel="preload" href="fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="site.css">
 </head>
@@ -387,10 +425,12 @@ def masthead_page(title: str, meta: str, nav_current: str, catnav_current: str) 
 """.strip()
 
 
-def page_shell(page_title: str, description: str, header: str, main_inner: str, body_attrs: str = "") -> str:
+def page_shell(
+    page_title: str, description: str, path: str, header: str, main_inner: str, body_attrs: str = ""
+) -> str:
     extra = (" " + body_attrs.strip()) if body_attrs.strip() else ""
     parts = [
-        head_html(page_title, description),
+        head_html(page_title, description, path),
         f'<body class="site"{extra}>',
         '<a class="skip-link" href="#main">Skip to books</a>',
         header,
@@ -458,8 +498,9 @@ def main() -> None:
         ]
     )
     home = page_shell(
-        "PE Operator's Book Recommendations",
-        "Hand-picked books that changed how I think — with Amazon links",
+        SITE_NAME,
+        f"{SITE_TAGLINE}. {total} hand-picked recommendations across {len(CATEGORIES)} categories, with Amazon links.",
+        "",
         masthead_home(total),
         home_main,
         body_attrs='data-page="home"',
@@ -473,7 +514,8 @@ def main() -> None:
         cards = [render_card(b) for b in cat_books]
         page = page_shell(
             f"{c['title']} — PE Operator Books",
-            f"PE Operator book recommendations: {c['title']}",
+            f"{c['blurb']} {len(cat_books)} hand-picked books, A–Z, from {SITE_NAME}.",
+            c["slug"],
             masthead_page(c["title"], f"{c['blurb']} · {len(cat_books)} books · A–Z", "categories", c["id"]),
             catalog_main(cards, f"Search {c['title'].replace('&', '&amp;')}…"),
         )
@@ -484,7 +526,8 @@ def main() -> None:
     cards = [render_card(b) for b in all_books]
     view_all = page_shell(
         "View all — PE Operator Books",
-        "All PE Operator book recommendations A–Z",
+        f"All {len(all_books)} books from {SITE_NAME}, A–Z by title across {len(CATEGORIES)} categories.",
+        "view-all.html",
         masthead_page("View all", f"{len(all_books)} books · A–Z by title", "view-all", "view-all"),
         catalog_main(cards, f"Search all {len(all_books)} books…"),
     )
