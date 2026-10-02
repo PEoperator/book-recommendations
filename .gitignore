@@ -1,0 +1,4 @@
+# Local design-tooling artifacts (Impeccable skill install + its working files)
+.agents/
+.impeccable/
+node_modules/

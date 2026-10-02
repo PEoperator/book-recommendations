@@ -18,7 +18,7 @@
 
   function cardSearchText(card) {
     // Title, author, and any visible blurb/notes in the card text block
-    var body = card.querySelector(".p-6");
+    var body = card.querySelector(".book-meta") || card.querySelector(".p-6");
     var raw = body ? body.textContent || "" : "";
     if (!raw) {
       var parts = [];

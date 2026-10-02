@@ -13,3 +13,5 @@ python3 scripts/build_site.py
 Shared runtime assets: `site.css`, `favorites.js` (All | ⚡ Favorites; no persistence).
 
 Latest additions on home = first 5 non-Rushmore cards in live/source grid order (top under Mt. Rushmore).
+
+Design refresh (Impeccable): pages no longer load the Tailwind CDN or Font Awesome. All styling lives in `site.css` (tokens at the top), with Archivo self-hosted from `fonts/`. Cards are re-rendered at build time from the extracted HTML. The original `<a>` tag (affiliate href), cover `src`/`alt`, title and author are kept byte-for-byte. See `DESIGN.md` for the system and `PRODUCT.md` for product context.

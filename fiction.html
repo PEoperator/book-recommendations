@@ -7,169 +7,172 @@
   <link rel="icon" href="/favicon.png" type="image/png" sizes="any">
   <link rel="apple-touch-icon" href="/favicon.png" sizes="180x180">
   <meta name="description" content="PE Operator book recommendations: Fiction">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <meta name="theme-color" content="#2d2e26">
+  <link rel="preload" href="fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="site.css">
 </head>
 
-<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
-<header class="bg-black text-white py-8">
-  <div class="max-w-6xl mx-auto px-4 text-center">
-    <h1 class="text-3xl sm:text-4xl font-bold">Fiction — PE Operator Books</h1>
-  </div>
-</header>
-<nav class="site-nav" aria-label="Primary">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-sm sm:text-base">
+<body class="site">
+<a class="skip-link" href="#main">Skip to books</a>
+<header class="masthead masthead--page">
+  <nav class="site-nav" aria-label="Primary">
+  <div class="wrap site-nav-inner">
     <a href="index.html">Home</a>
-    <span class="text-gray-500 hidden sm:inline" aria-hidden="true">·</span>
-    <a href="index.html#categories" class="is-current">Categories</a>
-    <span class="text-gray-500 hidden sm:inline" aria-hidden="true">·</span>
+    <a href="index.html#categories" class="is-current" aria-current="page">Categories</a>
     <a href="view-all.html">View all</a>
   </div>
 </nav>
-<nav class="category-nav" aria-label="Categories">
-  <div class="category-nav-inner">
+  <div class="wrap">
+    <div class="banner banner--strip" aria-hidden="true">
+      <img src="Untitled.jpg" alt="" width="1479" height="367">
+    </div>
+    <h1 class="display display--page">Fiction</h1>
+    <p class="page-meta">Novels, stories, and literary worlds. · 7 books · A–Z</p>
+  </div>
+  <nav class="category-nav" aria-label="Categories">
+  <div class="wrap category-nav-inner">
     <a href="index.html">Home</a>
     <a href="operators-builders.html">Operators & Builders</a>
     <a href="investing-capital.html">Investing & Capital</a>
     <a href="biography-history.html">Biography & History</a>
     <a href="faith-meaning.html">Faith & Meaning</a>
     <a href="mindset-judgment.html">Mindset & Judgment</a>
-    <a href="fiction.html" class="is-current">Fiction</a>
+    <a href="fiction.html" class="is-current" aria-current="page">Fiction</a>
     <a href="view-all.html">View all</a>
   </div>
 </nav>
-<main class="flex-grow max-w-7xl mx-auto px-6 py-6">
-<div class="filter-bar">
+</header>
+<main id="main" class="wrap main">
+<div class="toolbar">
+  <div class="filter-bar">
   <div class="filter-toggles" role="group" aria-label="Book filter">
     <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
-    <button type="button" class="filter-btn" data-filter="favorites" aria-pressed="false">⚡ Favorites</button>
+    <button type="button" class="filter-btn" data-filter="favorites" aria-pressed="false"><svg class="icon-bolt" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.2 1.8 4.6 13.6h6.1l-1.6 8.6 9.9-12.4h-6.3l1.5-8z" fill="currentColor"/></svg><span>Favorites</span></button>
   </div>
   <label class="book-search-label">
     <span class="visually-hidden">Search books</span>
-    <input type="search" id="book-search" class="book-search" placeholder="Search titles &amp; authors…" autocomplete="off" spellcheck="false">
+    <svg class="icon-search" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <input type="search" id="book-search" class="book-search" placeholder="Search Fiction…" autocomplete="off" spellcheck="false">
   </label>
 </div>
-<p id="filter-empty" class="filter-empty" role="status" aria-live="polite"></p>
-
-<section class="pb-10">
-  <div class="max-w-7xl mx-auto">
-    
-    <div class="text-left mb-6 border-b-2 border-gray-900 pb-4">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">Fiction</h2>
-    </div>
-    <p class="text-gray-600 mb-4">Novels, stories, and literary worlds. · 7 books · A–Z</p>
-    <div id="books-grid" class="grid grid-cols-2 min-[480px]:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 md:gap-8">
-<article data-book-card="true" class="bg-white rounded-2xl shadow-lg overflow-hidden book-card relative">
-  <a href="https://www.amazon.com/dp/B000FC22RC?tag=peoperator-20" target="_blank" rel="noopener">
-    <img src="https://m.media-amazon.com/images/I/61GvkCUk5DL._SL1500_.jpg" alt="The Brothers Karamazov" class="book-cover" loading="lazy">
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-2">The Brothers Karamazov</h3>
-      <p class="text-gray-600 mb-3">Fyodor Dostoyevsky and Constance Garnett</p>
-    </div>
-  </a>
-</article>
-
-<article data-book-card="true" data-favorite="true" class="bg-white rounded-2xl shadow-lg overflow-hidden book-card relative">
-  <div class="absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md">
-    <img src="lightning.png" alt="Lightning Badge" class="w-full h-full object-cover">
-  </div>
-  <a href="https://amzn.to/3Qtamvt" target="_blank" rel="noopener">
-    <img src="https://m.media-amazon.com/images/I/710YPoKebhL._SL1500_.jpg" alt="The Fellowship Of The Ring" class="book-cover" loading="lazy">
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-2">The Fellowship Of The Ring</h3>
-      <p class="text-gray-600 mb-3">J.R.R. Tolkien</p>
-    </div>
-  </a>
-</article>
-
-<article data-book-card="true" class="bg-white rounded-2xl shadow-lg overflow-hidden book-card relative">
-  <a href="https://amzn.to/4ePFEpK" target="_blank" rel="noopener">
-    <img src="https://m.media-amazon.com/images/I/71OF35MLUEL._SL1500_.jpg" alt="The Hobbit" class="book-cover" loading="lazy">
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-2">The Hobbit</h3>
-      <p class="text-gray-600 mb-3">J.R.R. Tolkien</p>
-    </div>
-  </a>
-</article>
-
-<article data-book-card="true" data-favorite="true" class="bg-white rounded-2xl shadow-lg overflow-hidden book-card relative">
-   <div class="absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md">
-    <img src="lightning.png" alt="Lightning Badge" class="w-full h-full object-cover">
-  </div>
-  <a href="https://www.amazon.com/dp/B00EMXBDMA?tag=peoperator-20" target="_blank" rel="noopener">
-    <img src="https://images-na.ssl-images-amazon.com/images/P/B00EMXBDMA.01.LZZZZZZZ.jpg" alt="The Martian" class="book-cover" loading="lazy">
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-2">The Martian</h3>
-      <p class="text-gray-600 mb-3">Andy Weir</p>
-    </div>
-  </a>
-</article>
-
-<article data-book-card="true" data-favorite="true" class="bg-white rounded-2xl shadow-lg overflow-hidden book-card relative">
-  <div class="absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md">
-    <img src="lightning.png" alt="Lightning Badge" class="w-full h-full object-cover">
-  </div>
-  <a href="https://amzn.to/4oJDZp9" target="_blank" rel="noopener">
-    <img src="https://m.media-amazon.com/images/I/71tDovoHA+L._SL1500_.jpg" alt="The Return Of The King" class="book-cover" loading="lazy">
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-2">The Return Of The King</h3>
-      <p class="text-gray-600 mb-3">J.R.R. Tolkien</p>
-    </div>
-  </a>
-</article>
-
-<article data-book-card="true" data-favorite="true" class="bg-white rounded-2xl shadow-lg overflow-hidden book-card relative">
-   <div class="absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md">
-    <img src="lightning.png" alt="Lightning Badge" class="w-full h-full object-cover">
-  </div>
-  <a href="https://www.amazon.com/dp/B0B83PD492?tag=peoperator-20" target="_blank" rel="noopener">
-    <img src="https://m.media-amazon.com/images/I/81i545aZL4L._SL1500_.jpg" alt="Toward the Corner of Mercy and Peace" class="book-cover" loading="lazy">
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-2">Toward the Corner of Mercy and Peace</h3>
-      <p class="text-gray-600 mb-3">Tracey Buchanan</p>
-    </div>
-  </a>
-</article>
-
-<article data-book-card="true" data-favorite="true" class="bg-white rounded-2xl shadow-lg overflow-hidden book-card relative">
-  <div class="absolute top-2 right-2 z-10 w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full ring-4 ring-amber-400/60 ring-offset-2 ring-offset-white shadow-md">
-    <img src="lightning.png" alt="Lightning Badge" class="w-full h-full object-cover">
-  </div>
-  <a href="https://amzn.to/3SeeFLS" target="_blank" rel="noopener">
-    <img src="https://m.media-amazon.com/images/I/71nNxfSvGnL._SL1500_.jpg" alt="The Two Towers" class="book-cover" loading="lazy">
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-2">The Two Towers</h3>
-      <p class="text-gray-600 mb-3">J.R.R. Tolkien</p>
-    </div>
-  </a>
-</article>
 </div>
+<section class="section section-catalog" aria-labelledby="books-title">
+  <h2 class="visually-hidden" id="books-title">Books</h2>
+  <p id="filter-empty" class="filter-empty" role="status" aria-live="polite"></p>
+  <div id="books-grid" class="book-grid">
+    <article data-book-card="true" class="book">
+      <a href="https://www.amazon.com/dp/B000FC22RC?tag=peoperator-20" target="_blank" rel="noopener">
+        <div class="book-cover-frame">
+          <img src="https://m.media-amazon.com/images/I/61GvkCUk5DL._SL1500_.jpg" alt="The Brothers Karamazov" class="book-cover" loading="lazy" decoding="async" width="300" height="450">
+        </div>
+        <div class="book-meta">
+          <h3 class="book-title">The Brothers Karamazov</h3>
+          <p class="book-author">Fyodor Dostoyevsky and Constance Garnett</p>
+        </div>
+      </a>
+    </article>
+
+    <article data-book-card="true" data-favorite="true" class="book">
+      <a href="https://amzn.to/3Qtamvt" target="_blank" rel="noopener">
+        <div class="book-cover-frame">
+          <img src="https://m.media-amazon.com/images/I/710YPoKebhL._SL1500_.jpg" alt="The Fellowship Of The Ring" class="book-cover" loading="lazy" decoding="async" width="300" height="450">
+        <span class="bolt-badge"><img src="lightning.png" alt="Favorite" width="48" height="48" decoding="async"></span>
+        </div>
+        <div class="book-meta">
+          <h3 class="book-title">The Fellowship Of The Ring</h3>
+          <p class="book-author">J.R.R. Tolkien</p>
+        </div>
+      </a>
+    </article>
+
+    <article data-book-card="true" class="book">
+      <a href="https://amzn.to/4ePFEpK" target="_blank" rel="noopener">
+        <div class="book-cover-frame">
+          <img src="https://m.media-amazon.com/images/I/71OF35MLUEL._SL1500_.jpg" alt="The Hobbit" class="book-cover" loading="lazy" decoding="async" width="300" height="450">
+        </div>
+        <div class="book-meta">
+          <h3 class="book-title">The Hobbit</h3>
+          <p class="book-author">J.R.R. Tolkien</p>
+        </div>
+      </a>
+    </article>
+
+    <article data-book-card="true" data-favorite="true" class="book">
+      <a href="https://www.amazon.com/dp/B00EMXBDMA?tag=peoperator-20" target="_blank" rel="noopener">
+        <div class="book-cover-frame">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/B00EMXBDMA.01.LZZZZZZZ.jpg" alt="The Martian" class="book-cover" loading="lazy" decoding="async" width="300" height="450">
+        <span class="bolt-badge"><img src="lightning.png" alt="Favorite" width="48" height="48" decoding="async"></span>
+        </div>
+        <div class="book-meta">
+          <h3 class="book-title">The Martian</h3>
+          <p class="book-author">Andy Weir</p>
+        </div>
+      </a>
+    </article>
+
+    <article data-book-card="true" data-favorite="true" class="book">
+      <a href="https://amzn.to/4oJDZp9" target="_blank" rel="noopener">
+        <div class="book-cover-frame">
+          <img src="https://m.media-amazon.com/images/I/71tDovoHA+L._SL1500_.jpg" alt="The Return Of The King" class="book-cover" loading="lazy" decoding="async" width="300" height="450">
+        <span class="bolt-badge"><img src="lightning.png" alt="Favorite" width="48" height="48" decoding="async"></span>
+        </div>
+        <div class="book-meta">
+          <h3 class="book-title">The Return Of The King</h3>
+          <p class="book-author">J.R.R. Tolkien</p>
+        </div>
+      </a>
+    </article>
+
+    <article data-book-card="true" data-favorite="true" class="book">
+      <a href="https://www.amazon.com/dp/B0B83PD492?tag=peoperator-20" target="_blank" rel="noopener">
+        <div class="book-cover-frame">
+          <img src="https://m.media-amazon.com/images/I/81i545aZL4L._SL1500_.jpg" alt="Toward the Corner of Mercy and Peace" class="book-cover" loading="lazy" decoding="async" width="300" height="450">
+        <span class="bolt-badge"><img src="lightning.png" alt="Favorite" width="48" height="48" decoding="async"></span>
+        </div>
+        <div class="book-meta">
+          <h3 class="book-title">Toward the Corner of Mercy and Peace</h3>
+          <p class="book-author">Tracey Buchanan</p>
+        </div>
+      </a>
+    </article>
+
+    <article data-book-card="true" data-favorite="true" class="book">
+      <a href="https://amzn.to/3SeeFLS" target="_blank" rel="noopener">
+        <div class="book-cover-frame">
+          <img src="https://m.media-amazon.com/images/I/71nNxfSvGnL._SL1500_.jpg" alt="The Two Towers" class="book-cover" loading="lazy" decoding="async" width="300" height="450">
+        <span class="bolt-badge"><img src="lightning.png" alt="Favorite" width="48" height="48" decoding="async"></span>
+        </div>
+        <div class="book-meta">
+          <h3 class="book-title">The Two Towers</h3>
+          <p class="book-author">J.R.R. Tolkien</p>
+        </div>
+      </a>
+    </article>
   </div>
 </section>
 </main>
-
-<!-- Sticky Footer -->
-<footer class="w-full bg-gray-900 text-white mt-auto">
-  <div class="max-w-7xl mx-auto px-6 py-10 text-center space-y-5">
-    <div>
+<footer class="site-footer">
+  <div class="wrap site-footer-inner">
+    <div class="footer-recommend">
       <a href="https://x.com/intent/tweet?text=Book%20rec%20for%20%40PEoperator%3A%20%5Bdelete%20this%20and%20provide%20your%20book%20recommendation%21%5D"
          target="_blank" rel="noopener"
-         class="x-recommend-btn inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-gray-900 font-bold py-3 px-6 rounded-full transition shadow-lg text-base"
+         class="x-recommend-btn"
          aria-label="Recommend a book to @PEoperator on X">
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
         </svg>
         Recommend a book
       </a>
-      <p class="mt-3 text-sm text-gray-400">Tweet a rec to @PEoperator</p>
+      <p class="footer-note">Tweet a rec to @PEoperator</p>
     </div>
-    <p class="text-sm italic opacity-75 leading-snug">
-      Links on this site may earn a small commission from qualifying purchases, at no extra cost to you. All earnings go straight back into the next recommendation!
-    </p>
-    <p class="text-base">
-      Made post-workout by <a href="https://x.com/PEoperator" target="_blank" rel="noopener" class="font-bold hover:underline">@PEoperator</a> • 2025
-    </p>
+    <div class="footer-fine">
+      <p class="footer-disclosure">
+        Links on this site may earn a small commission from qualifying purchases, at no extra cost to you. All earnings go straight back into the next recommendation!
+      </p>
+      <p class="footer-credit">
+        Made post-workout by <a href="https://x.com/PEoperator" target="_blank" rel="noopener">@PEoperator</a> • 2025
+      </p>
+    </div>
   </div>
 </footer>
 <script src="favorites.js"></script>
